@@ -7,7 +7,7 @@ import org.omg.CORBA.portable.ValueInputStream;
 
 public class SolutionNonRecursive {
 
-	//Accept
+	//Accepted
 	public static int maxDepth(TreeNode root) {
 		//判空不可漏，不然会 RUNTIME ERROR
 		if (root == null) {
