@@ -18,7 +18,7 @@ package Q237DeleteNodeinaLinkedList;
  * 
  *
 */
-public class Solution237 {
+public class Solution {
 	
 	public static void main(String[] args) {
 		
