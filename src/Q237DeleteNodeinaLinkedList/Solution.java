@@ -20,12 +20,6 @@ package Q237DeleteNodeinaLinkedList;
 */
 public class Solution {
 	
-	public static void main(String[] args) {
-		
-		
-		
-	}
-	
 	public void deleteNode(ListNode node) {
 		if (node == null) {
 			return;
