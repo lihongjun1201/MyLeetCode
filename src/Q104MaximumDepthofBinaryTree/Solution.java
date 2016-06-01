@@ -11,8 +11,8 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
  * 难度：Easy
  * 状态：AC
  * 
- * 思路：分别递归左子树 和 右子树 ，最后返回左右子树中较大的深度。
- * 
+ * 思路： 1） 分别递归左子树 和 右子树 ，最后返回左右子树中较大的深度。
+ * 	   2） 非递归方式： 用栈或队列。类似层次遍历
  * 
  */
 
@@ -96,7 +96,8 @@ public class Solution {
 		treeNode0.right = treeNode1;
 		treeNode1.right = treeNode2;
 		
-		System.out.println( maxDepth(treeNode3));
+//		System.out.println( maxDepth(treeNode3));
+		System.out.println( SolutionNonRecursive.maxDepth(treeNode0));
 		
 	}
 
