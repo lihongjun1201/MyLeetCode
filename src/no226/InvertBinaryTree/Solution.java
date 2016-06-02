@@ -2,8 +2,6 @@ package no226.InvertBinaryTree;
 
 import java.util.Stack;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.ParagraphAction;
-
 /*
  * Invert a binary tree.
 
@@ -51,30 +49,19 @@ public class Solution {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		TreeNode node0 = new TreeNode(0);
+		TreeNode node5 = new TreeNode(-5);
+		
+		node0.left = node5;
+		
+		TreeNode node00 = new TreeNode(00);
+		TreeNode node8 = new TreeNode(-8);
+		node00.left = node8;
+		
+		boolean issame = isSameTree(node0, node00);
+		System.out.println(issame);
 
-		TreeNode node4 = new TreeNode(4);
-
-		TreeNode node2 = new TreeNode(2);
-		TreeNode node7 = new TreeNode(7);
-
-		TreeNode node1 = new TreeNode(1);
-		TreeNode node3 = new TreeNode(3);
-
-		TreeNode node6 = new TreeNode(6);
-		TreeNode node9 = new TreeNode(9);
-
-		node4.left = node2;
-		node4.right = node7;
-
-		node2.left = node1;
-		node2.right = node3;
-
-		node7.left = node6;
-		node7.right = node9;
-
-		invertTree2(node4);
-
-		System.out.println("...");
 	}
 
 	/**
@@ -125,8 +112,8 @@ public class Solution {
 	/**
 	 * 递归方法好理解，但是容易造成 stackoverflow 所以利用栈进行非递归处理，能更健壮
 	 * 
-	 * 类似层次遍历
-	 * 状态 AC
+	 * 类似层次遍历 状态 AC
+	 * 
 	 * @param root
 	 * @return
 	 */
@@ -139,7 +126,7 @@ public class Solution {
 
 		stack.push(root);
 
-		//从顶层到底层不断的交换左右子树即可
+		// 从顶层到底层不断的交换左右子树即可
 		while (!stack.isEmpty()) {
 			TreeNode node = stack.pop();
 			TreeNode leftchild = node.left;
@@ -159,6 +146,32 @@ public class Solution {
 
 		return root;
 
+	}
+
+	
+	/**
+	 * 递归判断两个树是否结构和数据一致
+	 * 状态 Accepted
+	 * 
+	 * @param p
+	 * @param q
+	 * @return
+	 */
+	public static boolean isSameTree(TreeNode p, TreeNode q) {
+		if (p == null && q == null) {
+			return true;
+		}
+
+		if ( (p == null && q != null) || p != null && q == null ) {
+			return false;
+		}
+		
+		
+		if (p.val == q.val) {
+			return isSameTree(p.left, q.left) && isSameTree(p.right, q.right) ;
+		}
+		
+		return false;
 	}
 
 }
