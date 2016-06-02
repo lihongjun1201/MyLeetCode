@@ -14,9 +14,11 @@ import java.util.Arrays;
  Given [5, 7, 7, 8, 8, 10] and target value 8,
  return [3, 4].
 
+题目：搜索有序数组中某元素出现的下标范围
  难度： 中等
- 答案： ？
  思路： 因为要求时间复杂度 O（log n） ，所以考虑利用二分查找
+状态： ？
+
 
  */
 

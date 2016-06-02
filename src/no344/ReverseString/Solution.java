@@ -11,7 +11,7 @@ package no344.ReverseString;
 难度：简单
 思路： 方法一：头尾交换即可。
 	方法二： 递归处理（参考）
-
+状态：AC
 https://github.com/lihongjun1201/MyLeetCode.git
  *
  */
