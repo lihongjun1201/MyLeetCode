@@ -6,9 +6,10 @@ package no206.ReverseLinkedList;
  * 
  * 题目：反转链表
  * 难度：简单
- * 思路：
- * 方法一：迭代
- * 方法二：递归
+ * 
+ * 思路
+ * 方法一：迭代  AC
+ * 方法二：递归 （not yet） 
  *
  * 
  * 
@@ -46,14 +47,14 @@ public class Solution {
 		showlist(n1);
 		System.out.println();
 
-		ListNode newHead = reverseList2(n1);
+		ListNode newHead = reverseList(n1);
 		showlist(newHead);
 
 	}
 
 	/**
-	 * 递归反转链表
-	 * 
+	 * 递归反转链表 (虽然通过，但自己写得逻辑比较乱...)
+	 * Accepted 
 	 * @param head
 	 * @return
 	 */
@@ -62,14 +63,32 @@ public class Solution {
 			return null;
 		}
 
-		ListNode newhead = head.next;
-		ListNode beforeNode = head;
-		if (head.next != null) {
-			beforeNode = reverseList(head.next);
+		ListNode currentNode = head;
+		if (head.next != null) {  
+			ListNode newhead = reverseList(head.next);
+
+			if (newhead.next == null) { //遍历到最尾一个节点时 ，特殊处理
+				newhead.next = currentNode;
+				currentNode.next = null;
+			} else {
+
+				ListNode tail = null;  //找到返回的新逆序子链的末尾
+				ListNode cur = newhead;
+				while (cur != null) {
+					tail = cur;
+					cur = cur.next;
+				}
+				
+				
+				tail.next = currentNode;
+				currentNode.next = null;  //将末尾置空，避免循环链表
+			}
+			return newhead;
+			
+		} else { //只有递归到最后一个节点时才会走这里，返回最后一个节点 ，其余都走上面代码
+			return currentNode;
 		}
 
-		newhead = beforeNode;
-		return beforeNode;
 	}
 
 	public static void showlist(ListNode head) {
@@ -80,8 +99,8 @@ public class Solution {
 	}
 
 	/**
-	 * 迭代反转链表
-	 * Accepted 
+	 * 迭代反转链表 Accepted
+	 * 
 	 * @param head
 	 * @return
 	 */
@@ -91,23 +110,22 @@ public class Solution {
 		}
 
 		ListNode newhead = null;
-		
+
 		ListNode current = head;
 		while (head != null) {
 			head = head.next;
 
-			if (newhead == null) { //第一次插入节点需要特殊对待
+			if (newhead == null) { // 第一次插入节点需要特殊对待
 				newhead = current;
 				current.next = null;
-			}
-			else {
+			} else {
 				current.next = newhead;
 				newhead = current;
 			}
-			
+
 			current = head;
 		}
-		
+
 		return newhead;
 	}
 
