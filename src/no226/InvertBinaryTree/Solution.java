@@ -50,17 +50,7 @@ public class Solution {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		TreeNode node0 = new TreeNode(0);
-		TreeNode node5 = new TreeNode(-5);
 		
-		node0.left = node5;
-		
-		TreeNode node00 = new TreeNode(00);
-		TreeNode node8 = new TreeNode(-8);
-		node00.left = node8;
-		
-		boolean issame = isSameTree(node0, node00);
-		System.out.println(issame);
 
 	}
 
@@ -149,29 +139,6 @@ public class Solution {
 	}
 
 	
-	/**
-	 * 递归判断两个树是否结构和数据一致
-	 * 状态 Accepted
-	 * 
-	 * @param p
-	 * @param q
-	 * @return
-	 */
-	public static boolean isSameTree(TreeNode p, TreeNode q) {
-		if (p == null && q == null) {
-			return true;
-		}
-
-		if ( (p == null && q != null) || p != null && q == null ) {
-			return false;
-		}
-		
-		
-		if (p.val == q.val) {
-			return isSameTree(p.left, q.left) && isSameTree(p.right, q.right) ;
-		}
-		
-		return false;
-	}
+	
 
 }
