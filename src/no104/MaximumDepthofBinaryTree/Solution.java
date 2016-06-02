@@ -1,4 +1,4 @@
-package Q104MaximumDepthofBinaryTree;
+package no104.MaximumDepthofBinaryTree;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
 

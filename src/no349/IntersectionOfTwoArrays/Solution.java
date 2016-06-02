@@ -1,4 +1,4 @@
-package Q349IntersectionOfTwoArrays;
+package no349.IntersectionOfTwoArrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;

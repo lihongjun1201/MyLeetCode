@@ -1,4 +1,4 @@
-package Q237DeleteNodeinaLinkedList;
+package no237.DeleteNodeinaLinkedList;
 
 
 /*
