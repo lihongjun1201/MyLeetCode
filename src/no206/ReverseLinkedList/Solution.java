@@ -47,14 +47,14 @@ public class Solution {
 		showlist(n1);
 		System.out.println();
 
-		ListNode newHead = reverseList(n1);
+		ListNode newHead = reverseList4(n1);
 		showlist(newHead);
 
 	}
 
 	/**
-	 * 递归反转链表 (虽然通过，但自己写得逻辑比较乱...)
-	 * Accepted 
+	 * 递归反转链表 (虽然通过，但自己写得逻辑比较乱...) Accepted
+	 * 
 	 * @param head
 	 * @return
 	 */
@@ -64,42 +64,34 @@ public class Solution {
 		}
 
 		ListNode currentNode = head;
-		if (head.next != null) {  
+		if (head.next != null) {
 			ListNode newhead = reverseList(head.next);
 
-			if (newhead.next == null) { //遍历到最尾一个节点时 ，特殊处理
+			if (newhead.next == null) { // 遍历到最尾一个节点时 ，特殊处理
 				newhead.next = currentNode;
 				currentNode.next = null;
 			} else {
 
-				ListNode tail = null;  //找到返回的新逆序子链的末尾
+				ListNode tail = null; // 找到返回的新逆序子链的末尾
 				ListNode cur = newhead;
 				while (cur != null) {
 					tail = cur;
 					cur = cur.next;
 				}
-				
-				
+
 				tail.next = currentNode;
-				currentNode.next = null;  //将末尾置空，避免循环链表
+				currentNode.next = null; // 将末尾置空，避免循环链表
 			}
 			return newhead;
-			
-		} else { //只有递归到最后一个节点时才会走这里，返回最后一个节点 ，其余都走上面代码
+
+		} else { // 只有递归到最后一个节点时才会走这里，返回最后一个节点 ，其余都走上面代码
 			return currentNode;
 		}
 
 	}
 
-	public static void showlist(ListNode head) {
-		while (head != null) {
-			System.out.print(head.val + " ");
-			head = head.next;
-		}
-	}
-
 	/**
-	 * 迭代反转链表 Accepted
+	 * 头插法 迭代反转链表 Accepted
 	 * 
 	 * @param head
 	 * @return
@@ -129,7 +121,52 @@ public class Solution {
 		return newhead;
 	}
 
+	// 参考高手写法---------------------------------------------------------------------
+	/**
+	 * 迭代法 （尾插方法） 代码明显十分简洁，思路也很清晰 Accepted
+	 * 
+	 * @param head
+	 * @return
+	 */
+	public static ListNode reverseList3(ListNode head) {
+		ListNode remainHead = head;
+		ListNode current = head;
+		ListNode newHead = null;
+
+		while (current != null) {
+			remainHead = current.next;
+
+			current.next = newHead;
+			newHead = current;
+
+			current = remainHead;
+		}
+
+		return newHead;
+
+	}
+
+	public static ListNode reverseList4(ListNode head) {
+		if (head == null || head.next == null)
+			return head;
+
+		ListNode current = head;
+		ListNode newHead = reverseList4(current.next);
+		(current.next).next = current; // 让原链表该节点的 下一个节点指向自己
+		current.next = null; // 防止循环链表
+
+		return newHead;
+
+	}
+
 	// ---------------------------------------------------------
+
+	public static void showlist(ListNode head) {
+		while (head != null) {
+			System.out.print(head.val + " ");
+			head = head.next;
+		}
+	}
 
 	/*
 	 * 递归打印链表
