@@ -1,10 +1,7 @@
 package no242.ValidAnagram;
 
-import java.awt.Frame;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.sound.sampled.spi.FormatConversionProvider;
 
 /*Given two strings s and t, write a function to determine if t is an anagram of s.
 
@@ -24,7 +21,10 @@ import javax.sound.sampled.spi.FormatConversionProvider;
 
 /*题目：判断两个字符串 是否是 同字母不同组成 ？
  难度：easy
- 思路：将s，t单词中的各个字母及其频率 存入两个hashmap，判断这两个映射是否相同即可
+ 思路：
+ 方法一：将s，t单词中的各个字母及其频率 存入两个hashmap，判断这两个映射是否相同即可
+ 方法二：一样是hash原理，int[] map[26],将s每个字母存入则++ , t每个字母存入则--，最后数组保持为全0。
+ 
  */
 
 public class Solution {
@@ -38,7 +38,7 @@ public class Solution {
 	
 	
 	
-
+	//AC
 	public static boolean isAnagram(String s, String t) {
 		if (s == null || t == null) {
 			return false;
