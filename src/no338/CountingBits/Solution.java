@@ -30,7 +30,7 @@ package no338.CountingBits;
  0100  1
  0101  2
  0110  2
- 0111  3
+ 0111  3  在 7-4 = 3 的结果基础上 加上高位的1
 
 8-15:  
 8  1000  1
@@ -39,8 +39,8 @@ package no338.CountingBits;
 11 1011  3
 12 1100  2
 13 1101  3
-14 1110  3
-15 1111  4
+14 1110  3  在15-7 = 6 的结果基础上加上高位的1
+15 1111  4  在15-8 = 7的结果基础上 加上高位的1
 
  */
 
@@ -67,7 +67,9 @@ public class Solution {
 		  int[] answer = new int[num+1];
 	        int offset = 1;
 	        for(int i = 1; i < answer.length; i++){
-	            if(offset * 2 == i) offset *= 2;
+	            if(offset * 2 == i) {
+	            	offset *= 2; // 划分区间 
+	            }
 	            answer[i] = 1 + answer[i - offset];
 	        }
 	        return answer;
